@@ -12,13 +12,13 @@ class Installer extends LibraryInstaller
     */
     public function getPackageBasePath(PackageInterface $package)
     {
-        $type = $this->package->getType();
+        $type = $package->getType();
         
         if($type === 'charcoal-legacy') {
             return 'www/charcoal/';
         }
         
-        $prettyName = $this->package->getPrettyName();
+        $prettyName = $package->getPrettyName();
         if (strpos($prettyName, '/') !== false) {
             list($vendor, $name) = explode('/', $prettyName);
         } 
