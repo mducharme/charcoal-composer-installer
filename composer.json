@@ -1,0 +1,28 @@
+{
+    "name": "locomotivemtl/charcoal-composer-installer",
+    "description": "Charcoal Module Composer Installer",
+    "keywords":["charcoal", "locomotive", "composer-installer" "module"],
+    "type":"composer-plugin",
+    "authors": [
+        {
+            "name": "Mathieu Ducharme",
+            "email": "mat@locomotive.ca"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "composer-plugin-api": "1.0.0"
+    },
+    "_require-dev":{
+        "phpunit/phpunit": "*",
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "autoload":{
+        "psr-4":{
+            "Charcoal\\": "src/Charcoal"
+        }
+    },
+    "extra": {
+        "class": "Charcoal\\Composer\\InstallerPlugin"
+    }
+}
