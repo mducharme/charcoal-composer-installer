@@ -12,8 +12,19 @@ class Installer extends LibraryInstaller
     */
     public function getPackageBasePath(PackageInterface $package)
     {
-        var_dump($package->getPrettyName());
-        return 'modules/'.substr($package->getPrettyName(), 23);
+        $type = $this->package->getType();
+        $prettyName = $this->package->getPrettyName();
+        if (strpos($prettyName, '/') !== false) {
+            list($vendor, $name) = explode('/', $prettyName);
+        } 
+        else {
+            $vendor = '';
+            $name = $prettyName;
+        }
+
+        $module_name = str_replace(['charcoal-', 'module-'], '', $name);
+
+        return 'www/modules/'.$module_name;
     }
 
     /**
