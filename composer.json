@@ -1,7 +1,7 @@
 {
     "name": "locomotivemtl/charcoal-composer-installer",
     "description": "Charcoal Module Composer Installer",
-    "keywords":["charcoal", "locomotive", "composer-installer" "module"],
+    "keywords":["charcoal", "locomotive", "composer-installer", "module"],
     "type":"composer-plugin",
     "authors": [
         {
