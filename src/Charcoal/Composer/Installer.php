@@ -7,36 +7,31 @@ use Composer\Installer\LibraryInstaller;
 
 class Installer extends LibraryInstaller
 {
-    /**
-    * {@inheritDoc}
-    */
-    public function getPackageBasePath(PackageInterface $package)
+    protected $availableTypes = [ 'charcoal-module', 'charcoal-legacy' ];
+
+    public function getInstallPath(PackageInterface $package)
     {
         $type = $package->getType();
-        
-        if($type === 'charcoal-legacy') {
+
+        if ($type === 'charcoal-legacy') {
             return 'www/charcoal/';
         }
-        
+
         $prettyName = $package->getPrettyName();
         if (strpos($prettyName, '/') !== false) {
             list($vendor, $name) = explode('/', $prettyName);
-        } 
-        else {
+        } else {
             $vendor = '';
             $name = $prettyName;
         }
 
-        $module_name = str_replace(['charcoal-', 'module-'], '', $name);
+        $module_name = str_replace([ 'charcoal-', 'module-' ], '', $name);
 
         return 'www/modules/'.$module_name;
     }
 
-    /**
-    * {@inheritDoc}
-    */
     public function supports($packageType)
     {
-        return ('charcoal-module' === $packageType || 'charcoal-legacy' === $packageType);
+        return in_array($packageType, $this->availableTypes);
     }
 }
